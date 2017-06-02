@@ -8,7 +8,7 @@ include_once( dirname( __FILE__ ) . '/include/Database.class.php' );
 		<meta charset="utf-8" />
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 		
-		<title>NodeJS + PHP</title>
+		<title>Oh yeah</title>
 	
 		<link rel="stylesheet" href="css/bootstrap.css" />
 		<style type="text/css">body { padding-top: 60px; }</style>
@@ -21,16 +21,36 @@ include_once( dirname( __FILE__ ) . '/include/Database.class.php' );
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
-					<a class="brand" href="index.php">NodeJS_PHP</a>
+					<a class="brand" href="index.php">Demo</a>
 					
 				</div>
 			</div>
 		</div>
 		
 		<div class="container">
-			<h1>Integration test NodeJS + PHP</h1>
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+			
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">New Message!</h4>
+					</div>
+					<div class="modal-body">
+					  <p>New Message: </p><p class="new-message"></p>
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			 </div>
+		  </div>
+		
+			<h1>This is a simple application</h1>
 			<p>
-				This is a simple application, showing integration between nodeJS and PHP.
+				Hello World!
 			</p>
 			
 			<form class="form-inline" id="messageForm">
@@ -43,7 +63,7 @@ include_once( dirname( __FILE__ ) . '/include/Database.class.php' );
 			<div>
 				<ul id="messages">
 					<?php 
-						$sql = "SELECT id, name, message FROM message";
+						$sql = "SELECT id, name, message FROM messages ORDER BY id DESC";
 						$result = $conn->query($sql);
 
 						foreach( $result as $message ):

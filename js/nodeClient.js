@@ -12,7 +12,11 @@ $( "#messageForm" ).submit( function() {
 		type: "POST",
 		data: { name: nameVal, message: msg },
 		success: function(data) {
-			//alert('x');
+			var actualContent = $( "#messages" ).html();
+			var newMsgContent = '<li> <strong>' + nameVal + '</strong> : ' + msg + '</li>';
+			var content = newMsgContent + actualContent;
+			
+			$( "#messages" ).html( content );
 		}
 	});
 	
@@ -20,6 +24,8 @@ $( "#messageForm" ).submit( function() {
 });
 
 socket.on( 'message', function( data ) {
+	$('.new-message').html(data.message);
+	$('#myModal').modal('show');
 	var actualContent = $( "#messages" ).html();
 	var newMsgContent = '<li> <strong>' + data.name + '</strong> : ' + data.message + '</li>';
 	var content = newMsgContent + actualContent;
